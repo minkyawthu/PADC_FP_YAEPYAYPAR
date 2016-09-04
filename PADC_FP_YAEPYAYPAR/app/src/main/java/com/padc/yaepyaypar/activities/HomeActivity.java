@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.padc.yaepyaypar.R;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
