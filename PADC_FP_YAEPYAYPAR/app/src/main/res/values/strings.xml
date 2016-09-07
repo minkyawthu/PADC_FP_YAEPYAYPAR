@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PADC_FP_YAEPYAYPAR</string>
     <string name="action_settings">Settings</string>
+
+    <!-- left menu -->
+    <string name="left_menu_your_friend_list">Your friend list</string>
+    <string name="left_menu_share_your_profile">Your friend list that you share your profile</string>
 </resources>
