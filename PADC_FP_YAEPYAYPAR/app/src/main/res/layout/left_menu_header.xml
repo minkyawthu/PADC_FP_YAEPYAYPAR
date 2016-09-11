@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="@dimen/specific_left_menu_height"
-    android:background="@color/primary">
+    android:background="@drawable/happykiddo">
 
 
 </LinearLayout>

@@ -17,14 +17,18 @@ import java.util.List;
  */
 public class FriendsListAdapter extends RecyclerView.Adapter<FriendsViewHolder> {
 
+    private  FriendsViewHolder.listitemClicklistner clicklistner;
     private LayoutInflater mInflater;
     private List<String> mfriendNameList;
 
-    public FriendsListAdapter(List<String> mfriendNameList) {
+    public FriendsListAdapter(List<String> mfriendNameList,FriendsViewHolder.listitemClicklistner clicklistner) {
         if (mfriendNameList != null) {
             this.mfriendNameList = mfriendNameList;
+            this.clicklistner = clicklistner;
         } else {
             this.mfriendNameList = new ArrayList<>();
+            this.clicklistner = clicklistner;
+
         }
         mInflater = LayoutInflater.from(YaePyayParApp.getContext());
     }
@@ -32,7 +36,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsViewHolder> 
     @Override
     public FriendsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.view_item_friends, parent, false);
-        return new FriendsViewHolder(itemView);
+        return new FriendsViewHolder(itemView,clicklistner);
     }
 
     @Override

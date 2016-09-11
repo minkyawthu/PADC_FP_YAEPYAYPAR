@@ -15,5 +15,10 @@
             android:icon="@drawable/ic_share_your_profile_black_24dp"
             android:title="@string/left_menu_share_your_profile"
             />
+        <item
+            android:id="@+id/left_menu_yaypaypar"
+            android:icon="@drawable/ic_share_your_profile_black_24dp"
+            android:title="@string/yaypaypar"
+            />
     </group>
 </menu>

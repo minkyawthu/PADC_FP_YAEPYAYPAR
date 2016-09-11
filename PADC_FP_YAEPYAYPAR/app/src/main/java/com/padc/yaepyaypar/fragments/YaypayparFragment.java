@@ -1,9 +1,9 @@
 package com.padc.yaepyaypar.fragments;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,17 +23,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * A placeholder fragment containing a simple view.
+ * Created by kaungkhantthu on 9/11/16.
  */
-public class FriendsListFragment extends Fragment implements FriendsViewHolder.listitemClicklistner{
-
+public class YaypayparFragment extends Fragment implements FriendsViewHolder.listitemClicklistner {
     @BindView(R.id.rv_friends)
     RecyclerView rvFriends;
 
     private FriendsListAdapter mFriendListAdapter;
     private int gridColumnSpanCount = 2;
 
-    public FriendsListFragment() {
+    public YaypayparFragment() {
     }
 
     public static Fragment newInstance() {
@@ -69,3 +68,4 @@ public class FriendsListFragment extends Fragment implements FriendsViewHolder.l
         startActivity(i);
     }
 }
+

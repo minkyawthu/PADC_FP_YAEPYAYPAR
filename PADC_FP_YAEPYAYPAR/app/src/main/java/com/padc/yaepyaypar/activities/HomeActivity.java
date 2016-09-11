@@ -99,6 +99,10 @@ public class HomeActivity extends AppCompatActivity
                 return true;
             case R.id.left_menu_share_your_profile:
                 navigateToShareProfileList();
+
+            case R.id.left_menu_yaypaypar:
+                navigateToYaypayparForm();
+
                 return true;
         }
 
@@ -106,6 +110,11 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void navigateToFriendList() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, FriendsListFragment.newInstance())
+                .commit();
+    }
+    private void navigateToYaypayparForm() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container, FriendsListFragment.newInstance())
                 .commit();
