@@ -38,8 +38,8 @@ public class YaypayparQuestionAdapter extends RecyclerView.Adapter<RecyclerView.
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
         switch (viewType) {
-            case NORMAL_VIEWHOLDER:
-            case CHOICE_VIEWHOLDER:
+            case NORMAL_VIEWHOLDER: v = LayoutInflater.from(parent.getContext()).inflate(R.layout.normalquestion, parent, false);
+            case CHOICE_VIEWHOLDER: v = LayoutInflater.from(parent.getContext()).inflate(R.layout.multiplechoiceitem, parent, false);
             case DOODLE_VIEWHOLDER:
             case ANSWER_VIEWHOLDER:
             default:
