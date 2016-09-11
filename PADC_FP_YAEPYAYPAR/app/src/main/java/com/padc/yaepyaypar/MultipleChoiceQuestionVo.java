@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /**
  * Created by kaungkhantthu on 9/11/16.
  */
-public class multiplechoicequestion extends yaypayparpostvo {
+public class MultipleChoiceQuestionVo extends YayPayParPostVo {
     ArrayList<String> choice;
-    public multiplechoicequestion(String question, String answer, boolean isanswered, int viewType) {
+    public MultipleChoiceQuestionVo(String question, String answer, boolean isanswered, int viewType) {
         super(question, answer, isanswered, viewType);
     }
 }

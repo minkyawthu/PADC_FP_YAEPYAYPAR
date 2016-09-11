@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.padc.yaepyaypar.R;
 import com.padc.yaepyaypar.adapters.YaypayparQuestionAdapter;
-import com.padc.yaepyaypar.yaypayparpostvo;
+import com.padc.yaepyaypar.YayPayParPostVo;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class YaypayparDetailActivity extends AppCompatActivity {
     ImageView ivToolbar;
 
 
-    private ArrayList<yaypayparpostvo> yaypayparpostvos;
+    private ArrayList<YayPayParPostVo> yaypayparpostvos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +55,11 @@ public class YaypayparDetailActivity extends AppCompatActivity {
 
     private void setupArrayList() {
         yaypayparpostvos = new ArrayList<>();
-        yaypayparpostvos.add(new yaypayparpostvo("What is your name", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new yaypayparpostvo("How does your Friend Calls you", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new yaypayparpostvo("Where do you live", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new yaypayparpostvo("Who do you live with", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new yaypayparpostvo("What is your favourite food", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
+        yaypayparpostvos.add(new YayPayParPostVo("What is your name", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
+        yaypayparpostvos.add(new YayPayParPostVo("How does your Friend Calls you", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
+        yaypayparpostvos.add(new YayPayParPostVo("Where do you live", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
+        yaypayparpostvos.add(new YayPayParPostVo("Who do you live with", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
+        yaypayparpostvos.add(new YayPayParPostVo("What is your favourite food", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
 
 
     }

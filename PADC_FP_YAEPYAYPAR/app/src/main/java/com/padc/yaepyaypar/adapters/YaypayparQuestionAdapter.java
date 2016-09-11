@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.padc.yaepyaypar.NormalEdtextViewholder;
 import com.padc.yaepyaypar.R;
-import com.padc.yaepyaypar.yaypayparpostvo;
+import com.padc.yaepyaypar.YayPayParPostVo;
 
 import java.util.ArrayList;
 
@@ -16,14 +16,14 @@ import java.util.ArrayList;
  */
 public class YaypayparQuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final ArrayList<yaypayparpostvo> yaypayparpostvos;
+    private final ArrayList<YayPayParPostVo> yaypayparpostvos;
     public static final int NORMAL_VIEWHOLDER = 0;
     public static final int CHOICE_VIEWHOLDER = 1;
     public static final int DOODLE_VIEWHOLDER = 2;
     public static final int ANSWER_VIEWHOLDER = 3;
 
 
-    public YaypayparQuestionAdapter(ArrayList<yaypayparpostvo> yaypayparpostvos) {
+    public YaypayparQuestionAdapter(ArrayList<YayPayParPostVo> yaypayparpostvos) {
         this.yaypayparpostvos = yaypayparpostvos;
     }
 

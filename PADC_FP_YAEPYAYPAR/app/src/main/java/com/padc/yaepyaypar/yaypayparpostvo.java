@@ -3,14 +3,14 @@ package com.padc.yaepyaypar;
 /**
  * Created by kaungkhantthu on 9/11/16.
  */
-public class yaypayparpostvo {
+public class YayPayParPostVo {
 
     protected String question;
     protected String answer;
     protected boolean isanswered;
     protected int viewType;
 
-    public yaypayparpostvo(String question, String answer, boolean isanswered, int viewType) {
+    public YayPayParPostVo(String question, String answer, boolean isanswered, int viewType) {
         this.question = question;
         this.answer = answer;
         this.isanswered = isanswered;
