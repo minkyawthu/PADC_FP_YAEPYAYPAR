@@ -5,4 +5,18 @@
     <!-- left menu -->
     <string name="left_menu_your_friend_list">Your friend list</string>
     <string name="left_menu_share_your_profile">Your friend list that you share your profile</string>
+
+    <!-- dummy friends name-->
+    <string-array name="dummy_friends_name">
+        <item>John</item>
+        <item>Teller</item>
+        <item>Kity</item>
+        <item>Bo Bo</item>
+        <item>Mi Su</item>
+        <item>Aung Lin</item>
+        <item>Smith</item>
+        <item>Taylor</item>
+        <item>Royal</item>
+        <item>Mg Mg</item>
+    </string-array>
 </resources>

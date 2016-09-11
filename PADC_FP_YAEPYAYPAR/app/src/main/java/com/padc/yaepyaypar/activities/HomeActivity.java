@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.fragments.FriendsListFragment;
+import com.padc.yaepyaypar.fragments.ShareProfileListFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +58,10 @@ public class HomeActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
+        if (savedInstanceState == null) {
+            navigateToFriendList();
+        }
     }
 
     @Override
@@ -86,6 +92,29 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        switch (item.getItemId()) {
+            case R.id.left_menu_friend_list:
+                navigateToFriendList();
+                return true;
+            case R.id.left_menu_share_your_profile:
+                navigateToShareProfileList();
+                return true;
+        }
+
         return false;
     }
+
+    private void navigateToFriendList() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, FriendsListFragment.newInstance())
+                .commit();
+    }
+
+    private void navigateToShareProfileList() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, ShareProfileListFragment.newInstance())
+                .commit();
+    }
+
 }
