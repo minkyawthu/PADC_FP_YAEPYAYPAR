@@ -13,7 +13,10 @@ import android.view.ViewGroup;
 import com.padc.yaepyaypar.R;
 import com.padc.yaepyaypar.activities.YaypayparDetailActivity;
 import com.padc.yaepyaypar.adapters.FriendsListAdapter;
+import com.padc.yaepyaypar.adapters.YayPayparCategoryAdapter;
+import com.padc.yaepyaypar.model.YaypayparModel;
 import com.padc.yaepyaypar.views.FriendsViewHolder;
+import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,28 +28,27 @@ import butterknife.ButterKnife;
 /**
  * Created by kaungkhantthu on 9/11/16.
  */
-public class YaypayparFragment extends Fragment implements FriendsViewHolder.listitemClicklistner {
+public class YaypayparFragment extends Fragment  {
     @BindView(R.id.rv_friends)
     RecyclerView rvFriends;
 
-    private FriendsListAdapter mFriendListAdapter;
-    private int gridColumnSpanCount = 2;
+    private YayPayparCategoryAdapter yaypar;
+
 
     public YaypayparFragment() {
     }
 
     public static Fragment newInstance() {
-        Fragment fragment = new FriendsListFragment();
+        Fragment fragment = new YaypayparFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] nameListArray = getResources().getStringArray(R.array.dummy_friends_name);
-        List<String> friendNameList = new ArrayList<>(Arrays.asList(nameListArray));
+        YaypayparModel.getInstance().loadAttractions();
 
-        mFriendListAdapter = new FriendsListAdapter(friendNameList,this);
+
     }
 
     @Override
@@ -56,16 +58,10 @@ public class YaypayparFragment extends Fragment implements FriendsViewHolder.lis
         ButterKnife.bind(this, rootView);
 
 
-        rvFriends.setLayoutManager(new GridLayoutManager(getContext(), gridColumnSpanCount));
-        rvFriends.setAdapter(mFriendListAdapter);
+
 
         return rootView;
     }
 
-    @Override
-    public void onClick() {
-        Intent i = new Intent(getContext(), YaypayparDetailActivity.class);
-        startActivity(i);
-    }
 }
 
