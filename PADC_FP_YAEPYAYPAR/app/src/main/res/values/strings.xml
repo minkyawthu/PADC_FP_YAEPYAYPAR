@@ -6,6 +6,7 @@
     <string name="left_menu_your_friend_list">Your friend list</string>
     <string name="left_menu_share_your_profile">Your friend list that you share your profile</string>
     <string name="yaypaypar">yaypaypar</string>
+    <string name="category">Category</string>
 
     <!-- dummy friends name-->
     <string-array name="dummy_friends_name">

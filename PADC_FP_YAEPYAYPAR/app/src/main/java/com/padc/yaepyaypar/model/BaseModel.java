@@ -1,7 +1,7 @@
 package com.padc.yaepyaypar.model;
 
-import com.padc.yaepyaypar.OfflineDataAgent;
-import com.padc.yaepyaypar.YayPayParDataAgent;
+import com.padc.yaepyaypar.agents.OfflineDataAgent;
+import com.padc.yaepyaypar.agents.YayPayParDataAgent;
 
 /**
  * Created by kaungkhantthu on 9/17/16.

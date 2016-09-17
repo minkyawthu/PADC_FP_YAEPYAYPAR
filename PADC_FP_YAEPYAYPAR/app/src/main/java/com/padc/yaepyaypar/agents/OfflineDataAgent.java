@@ -1,8 +1,10 @@
-package com.padc.yaepyaypar;
+package com.padc.yaepyaypar.agents;
 
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
+import com.padc.yaepyaypar.Utils.CommonInstances;
+import com.padc.yaepyaypar.Utils.JsonUtils;
 import com.padc.yaepyaypar.model.YaypayparModel;
 import com.padc.yaepyaypar.vos.YayPayParVo;
 

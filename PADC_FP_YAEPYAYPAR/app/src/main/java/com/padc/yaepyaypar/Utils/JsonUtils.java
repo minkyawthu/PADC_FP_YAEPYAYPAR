@@ -1,6 +1,8 @@
-package com.padc.yaepyaypar;
+package com.padc.yaepyaypar.Utils;
 
 import android.content.Context;
+
+import com.padc.yaepyaypar.YaePyayParApp;
 
 import org.json.JSONException;
 

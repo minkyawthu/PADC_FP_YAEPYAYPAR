@@ -12,30 +12,21 @@ import butterknife.ButterKnife;
 /**
  * Created by mkt on 9/11/2016.
  */
-public class FriendsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FriendsViewHolder extends RecyclerView.ViewHolder {
 
-    private final listitemClicklistner itemclicklistner;
+
     @BindView(R.id.tv_friend_name)
     TextView tvFriendName;
 
-    public FriendsViewHolder(View itemView,listitemClicklistner clicklistner) {
+    public FriendsViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-        this.itemclicklistner = clicklistner;
-        itemView.setOnClickListener(this);
 
-    }
-
-    @Override
-    public void onClick(View view) {
-        itemclicklistner.onClick();
     }
 
     public void bindData(String friendName){
 
         tvFriendName.setText(friendName);
     }
-    public interface listitemClicklistner{
-        public void onClick();
-    }
+
 }

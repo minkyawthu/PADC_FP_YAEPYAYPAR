@@ -1,28 +1,36 @@
 
 package com.padc.yaepyaypar.vos;
 
+import android.content.res.Resources;
+
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.padc.yaepyaypar.Theme;
 
 public class YayPayParVo {
 
+    /**name is use for the title of the yay pay par specific category name **/
     @SerializedName("name")
     @Expose
     private String name;
     @SerializedName("id")
     @Expose
     private String id;
+    /**name is use for the title of the yay pay par specific category color **/
+
     @SerializedName("theme")
     @Expose
     private String theme;
+    /**questions that are going to be included in the specific yay pay par form**/
     @SerializedName("quizzes")
     @Expose
     private List<Quiz> quizzes = new ArrayList<Quiz>();
-    @SerializedName("solved")
+    @SerializedName("answered")
     @Expose
-    private String solved;
+    private boolean answered;
+    private Theme cTheme;
 
     /**
      * 
@@ -65,8 +73,22 @@ public class YayPayParVo {
      * @return
      *     The theme
      */
-    public String getTheme() {
-        return theme;
+    public Theme getTheme() {
+        switch (this.theme){
+            case "blue": return Theme.blue;
+
+            case "yellow": return Theme.yellow;
+
+            case "green": return  Theme.green;
+
+            case "purple": return Theme.purple;
+
+            case "base": return Theme.mapp;
+
+        }
+
+
+        return Theme.mapp;
     }
 
     /**
@@ -74,9 +96,7 @@ public class YayPayParVo {
      * @param theme
      *     The theme
      */
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
+
 
     /**
      * 
@@ -101,17 +121,17 @@ public class YayPayParVo {
      * @return
      *     The solved
      */
-    public String getSolved() {
-        return solved;
+    public boolean getSolved() {
+        return answered;
     }
 
     /**
      * 
-     * @param solved
+     * @param answered
      *     The solved
      */
-    public void setSolved(String solved) {
-        this.solved = solved;
+    public void setSolved(boolean answered) {
+        this.answered = answered;
     }
 
 }

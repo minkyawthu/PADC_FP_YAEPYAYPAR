@@ -14,6 +14,7 @@ import com.padc.yaepyaypar.R;
 import com.padc.yaepyaypar.activities.YaypayparDetailActivity;
 import com.padc.yaepyaypar.adapters.FriendsListAdapter;
 import com.padc.yaepyaypar.views.FriendsViewHolder;
+import com.padc.yaepyaypar.views.listitemClicklistner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class FriendsListFragment extends Fragment implements FriendsViewHolder.listitemClicklistner{
+public class FriendsListFragment extends Fragment implements listitemClicklistner {
 
     @BindView(R.id.rv_friends)
     RecyclerView rvFriends;
@@ -64,7 +65,7 @@ public class FriendsListFragment extends Fragment implements FriendsViewHolder.l
     }
 
     @Override
-    public void onClick() {
+    public void onClick(int position) {
         Intent i = new Intent(getContext(), YaypayparDetailActivity.class);
         startActivity(i);
     }
