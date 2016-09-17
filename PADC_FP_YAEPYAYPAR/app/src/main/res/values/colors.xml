@@ -9,4 +9,22 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+
+
+    <color name="accent_button">#9e9d24</color>
+    <!-- overlays -->
+    <color name="black_overlay">#9000</color>
+    <color name="black_overlay_light">#6000</color>
+
+    <!-- theme on white -->
+    <color name="text_white_ish">#EEE</color>
+    <color name="white_full">#FFF</color>
+
+    <!-- theme on black -->
+    <color name="text_black_ish">#111</color>
+    <color name="black_full">#F000</color>
+
+    <color name="bg_color_accent">#dcedc8</color>
+    <color name="accent_title_text">#8bc34a</color>
+
 </resources>

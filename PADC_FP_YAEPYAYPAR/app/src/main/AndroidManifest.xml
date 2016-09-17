@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.padc.yaepyaypar">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".YaePyayParApp"
         android:allowBackup="true"
@@ -22,6 +25,9 @@
         </activity>
         <activity android:name=".activities.YaypayparDetailActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".activities.AccountControlActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
