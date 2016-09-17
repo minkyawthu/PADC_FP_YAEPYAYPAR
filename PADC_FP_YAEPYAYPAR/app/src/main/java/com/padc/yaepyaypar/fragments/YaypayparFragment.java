@@ -1,6 +1,6 @@
 package com.padc.yaepyaypar.fragments;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,14 +11,15 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.Utils.Constants;
 import com.padc.yaepyaypar.Utils.OffsetDecoration;
+import com.padc.yaepyaypar.activities.YaypayparDetailActivity;
 import com.padc.yaepyaypar.adapters.YayPayparCategoryAdapter;
 import com.padc.yaepyaypar.model.YaypayparModel;
-import com.padc.yaepyaypar.views.listitemClicklistner;
+import com.padc.yaepyaypar.Utils.listitemClicklistner;
 import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +48,7 @@ public class YaypayparFragment extends Fragment implements listitemClicklistner 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        YaypayparModel.getInstance().loadAttractions();
+        YaypayparModel.getInstance().loadyaypaypar();
         View v;
 
     }
@@ -57,7 +58,7 @@ public class YaypayparFragment extends Fragment implements listitemClicklistner 
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_yaypaypar, container, false);
         ButterKnife.bind(this, rootView);
-       yaypayparlist = (ArrayList<YayPayParVo>) YaypayparModel.getInstance().getAttractionList();
+       yaypayparlist = (ArrayList<YayPayParVo>) YaypayparModel.getInstance().getYaypayparlist();
         return rootView;
     }
 
@@ -87,6 +88,9 @@ public class YaypayparFragment extends Fragment implements listitemClicklistner 
 
     @Override
     public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), YaypayparDetailActivity.class);
+        intent.putExtra(Constants.CATEGORY_ID,yaypayparlist.get(position).getId());
+        getActivity().startActivity(intent);
 
     }
 }

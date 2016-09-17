@@ -1,13 +1,11 @@
 
 package com.padc.yaepyaypar.vos;
 
-import android.content.res.Resources;
-
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.padc.yaepyaypar.Theme;
+import com.padc.yaepyaypar.entity.Theme;
 
 public class YayPayParVo {
 

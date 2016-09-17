@@ -1,34 +1,88 @@
 package com.padc.yaepyaypar.activities;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
+import android.util.Log;
+import android.widget.AdapterViewAnimator;
+import android.widget.AdapterViewFlipper;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.Utils.Constants;
+import com.padc.yaepyaypar.YaePyayParApp;
+import com.padc.yaepyaypar.adapters.QuizAdapter;
+import com.padc.yaepyaypar.model.YaypayparModel;
+import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class YaypayparDetailActivity extends AppCompatActivity {
 
-    @BindView(R.id.recyclerViewQuestionList)
-    RecyclerView recyclerViewQuestionList;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.iv_attraction)
-    ImageView ivToolbar;
+    @BindView(R.id.quiz_view)
+    AdapterViewAnimator quizView;
+    @BindView(R.id.progress)
+    ProgressBar progress;
+    @BindView(R.id.mSeekbar)
+    SeekBar mSeekbar;
+    @BindView(R.id.progress_toolbar)
+    Toolbar progressToolbar;
+    private String categoryid;
+    private YaypayparModel model;
+    private YayPayParVo YayPayParitem;
+    private QuizAdapter mQuizAdapter;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        categoryid = (String) getIntent().getExtras().get(Constants.CATEGORY_ID);
+        Log.e(YaePyayParApp.TAG, "onStart: "+categoryid);
+        model = YaypayparModel.getInstance();
+        model.loadyaypaypar();
+        YayPayParitem = model.getYaypayparById(categoryid);
+        setTheme(YayPayParitem.getTheme().getStyleId());
         setContentView(R.layout.activity_yaypaypar_detail);
         ButterKnife.bind(this);
+        quizView.setAdapter(getQuizAdapter());
+        setupProgress();
+    }
+    private QuizAdapter getQuizAdapter() {
+        if (null == mQuizAdapter) {
+            mQuizAdapter = new QuizAdapter(this, YayPayParitem);
+        }
+        return mQuizAdapter;
+    }
+    private void setupProgress(){
+        progress.setProgress(YayPayParitem.getQuizzes().size());
+        mSeekbar.setProgress(YayPayParitem.getQuizzes().size());
+
+        mSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                quizView.setSelection(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
 

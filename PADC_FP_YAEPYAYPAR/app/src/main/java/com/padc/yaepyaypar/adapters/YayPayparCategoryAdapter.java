@@ -2,7 +2,6 @@ package com.padc.yaepyaypar.adapters;
 
 import android.app.Activity;
 import android.support.annotation.ColorRes;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.padc.yaepyaypar.R;
-import com.padc.yaepyaypar.fragments.YaypayparFragment;
-import com.padc.yaepyaypar.model.YaypayparModel;
 import com.padc.yaepyaypar.views.YayPayParCategoryViewHolder;
-import com.padc.yaepyaypar.views.listitemClicklistner;
+import com.padc.yaepyaypar.Utils.listitemClicklistner;
 import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import java.util.ArrayList;

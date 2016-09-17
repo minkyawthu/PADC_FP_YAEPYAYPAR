@@ -13,8 +13,7 @@ import android.view.ViewGroup;
 import com.padc.yaepyaypar.R;
 import com.padc.yaepyaypar.activities.YaypayparDetailActivity;
 import com.padc.yaepyaypar.adapters.FriendsListAdapter;
-import com.padc.yaepyaypar.views.FriendsViewHolder;
-import com.padc.yaepyaypar.views.listitemClicklistner;
+import com.padc.yaepyaypar.Utils.listitemClicklistner;
 
 import java.util.ArrayList;
 import java.util.Arrays;

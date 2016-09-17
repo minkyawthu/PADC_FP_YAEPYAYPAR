@@ -1,7 +1,9 @@
-package com.padc.yaepyaypar;
+package com.padc.yaepyaypar.entity;
 
 import android.support.annotation.ColorRes;
 import android.support.annotation.StyleRes;
+
+import com.padc.yaepyaypar.R;
 
 /**
  * Created by kaungkhantthu on 9/17/16.

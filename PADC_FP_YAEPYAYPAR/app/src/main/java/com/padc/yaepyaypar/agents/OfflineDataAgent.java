@@ -41,7 +41,7 @@ public class OfflineDataAgent implements YayPayParDataAgent {
             Type listType = new TypeToken<List<YayPayParVo>>() {
             }.getType();
             List<YayPayParVo> YaypayparList = CommonInstances.getGsonInstance().fromJson(attractions, listType);
-            Log.e( "loadAttractions: ",YaypayparList.toString() );
+            Log.e( "loadyaypaypar: ",YaypayparList.toString() );
            YaypayparModel.getInstance().notifyAttractionsLoaded(YaypayparList);
             return;
         } catch (IOException e) {

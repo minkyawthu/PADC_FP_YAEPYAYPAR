@@ -24,7 +24,7 @@ public class YaypayparModel extends BaseModel {
     private YaypayparModel() {
         super();
         yayPayParVoList = new ArrayList<>();
-        //loadAttractions();
+        //loadyaypaypar();
     }
 
     public static YaypayparModel getInstance() {
@@ -34,17 +34,17 @@ public class YaypayparModel extends BaseModel {
         return objInstance;
     }
 
-    public void loadAttractions() {
+    public void loadyaypaypar() {
         dataAgent.loadAttractions();
     }
 
-    public List<YayPayParVo> getAttractionList() {
+    public List<YayPayParVo> getYaypayparlist() {
         return yayPayParVoList;
     }
 
-    public YayPayParVo getAttractionByName(String attractionName) {
+    public YayPayParVo getYaypayparById(String id) {
         for (YayPayParVo yayPayPar : yayPayParVoList) {
-            if (yayPayPar.getName().equals(attractionName))
+            if (yayPayPar.getId().equals(id))
                 return yayPayPar;
         }
 
