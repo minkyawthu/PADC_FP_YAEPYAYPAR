@@ -5,12 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.AdapterViewAnimator;
-import android.widget.AdapterViewFlipper;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
 import com.padc.yaepyaypar.R;
-import com.padc.yaepyaypar.Utils.Constants;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 import com.padc.yaepyaypar.YaePyayParApp;
 import com.padc.yaepyaypar.adapters.QuizAdapter;
 import com.padc.yaepyaypar.model.YaypayparModel;
@@ -46,7 +45,7 @@ public class YaypayparDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        categoryid = (String) getIntent().getExtras().get(Constants.CATEGORY_ID);
+        categoryid = (String) getIntent().getExtras().get(YaePyayParConstants.CATEGORY_ID);
         Log.e(YaePyayParApp.TAG, "onStart: "+categoryid);
         model = YaypayparModel.getInstance();
         model.loadyaypaypar();

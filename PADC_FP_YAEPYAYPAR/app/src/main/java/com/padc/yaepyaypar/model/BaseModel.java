@@ -1,7 +1,7 @@
 package com.padc.yaepyaypar.model;
 
-import com.padc.yaepyaypar.agents.OfflineDataAgent;
-import com.padc.yaepyaypar.agents.YayPayParDataAgent;
+import com.padc.yaepyaypar.data.agents.OfflineDataAgent;
+import com.padc.yaepyaypar.data.agents.YaePyayParDataAgent;
 
 /**
  * Created by kaungkhantthu on 9/17/16.
@@ -11,7 +11,7 @@ public abstract class BaseModel {
     private static final int INIT_DATA_AGENT_OFFLINE = 1;
     private static final int INIT_DATA_AGENT_RETROFIT = 4;
 
-    protected YayPayParDataAgent dataAgent;
+    protected YaePyayParDataAgent dataAgent;
 
     public BaseModel() {
         initDataAgent(INIT_DATA_AGENT_OFFLINE);

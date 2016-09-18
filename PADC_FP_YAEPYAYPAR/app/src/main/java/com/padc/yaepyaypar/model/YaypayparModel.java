@@ -1,7 +1,5 @@
 package com.padc.yaepyaypar.model;
 
-import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.padc.yaepyaypar.YaePyayParApp;
@@ -9,7 +7,6 @@ import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by kaungkhantthu on 9/17/16.
@@ -35,7 +32,7 @@ public class YaypayparModel extends BaseModel {
     }
 
     public void loadyaypaypar() {
-        dataAgent.loadAttractions();
+        dataAgent.loadYayPayPar();
     }
 
     public List<YayPayParVo> getYaypayparlist() {

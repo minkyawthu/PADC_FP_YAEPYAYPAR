@@ -5,12 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.padc.yaepyaypar.Utils.Constants;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 import com.padc.yaepyaypar.vos.Quiz;
 import com.padc.yaepyaypar.vos.YayPayParVo;
 import com.padc.yaepyaypar.widgets.AbsQuizView;
 import com.padc.yaepyaypar.widgets.FillBlankQuizView;
-import com.padc.yaepyaypar.widgets.YaypayparQuestionView;
 
 
 import java.util.List;
@@ -79,7 +78,7 @@ import java.util.List;
 
     private AbsQuizView<Quiz> createViewFor(Quiz quiz, int position) {
         switch (quiz.getType()) {
-            case Constants.VIEWTYPE_FILLBLANK:
+            case YaePyayParConstants.VIEWTYPE_FILLBLANK:
                 return new FillBlankQuizView(mContext, yayPayParVo, yayPayParVo.getQuizzes().get(position));
 
         }

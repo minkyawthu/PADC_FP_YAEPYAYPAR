@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import com.padc.yaepyaypar.R;
-import com.padc.yaepyaypar.Utils.Constants;
 import com.padc.yaepyaypar.Utils.OffsetDecoration;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 import com.padc.yaepyaypar.activities.YaypayparDetailActivity;
 import com.padc.yaepyaypar.adapters.YayPayparCategoryAdapter;
 import com.padc.yaepyaypar.model.YaypayparModel;
@@ -89,7 +89,7 @@ public class YaypayparFragment extends Fragment implements listitemClicklistner 
     @Override
     public void onClick(int position) {
         Intent intent = new Intent(getActivity(), YaypayparDetailActivity.class);
-        intent.putExtra(Constants.CATEGORY_ID,yaypayparlist.get(position).getId());
+        intent.putExtra(YaePyayParConstants.CATEGORY_ID,yaypayparlist.get(position).getId());
         getActivity().startActivity(intent);
 
     }

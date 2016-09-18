@@ -10,6 +10,9 @@ public class YaePyayParApp extends Application {
 
     private static Context context;
     public static String TAG = "YaePyayParApp";
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();

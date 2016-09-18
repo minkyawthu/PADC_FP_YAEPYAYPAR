@@ -1,5 +1,6 @@
 package com.padc.yaepyaypar.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -15,15 +16,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.controllers.UserController;
+import com.padc.yaepyaypar.data.models.UserModel;
+import com.padc.yaepyaypar.dialogs.SharedDialog;
+import com.padc.yaepyaypar.events.UserEvent;
 import com.padc.yaepyaypar.fragments.FriendsListFragment;
 import com.padc.yaepyaypar.fragments.ShareProfileListFragment;
+
 import com.padc.yaepyaypar.fragments.YaypayparFragment;
+
+import com.padc.yaepyaypar.views.pods.ViewPodAccountControl;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, UserController {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -33,6 +43,8 @@ public class HomeActivity extends AppCompatActivity
 
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
+
+    private ViewPodAccountControl vpAccountControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +62,8 @@ public class HomeActivity extends AppCompatActivity
         }
 
         navigationView.setNavigationItemSelectedListener(this);
+        vpAccountControl = (ViewPodAccountControl) navigationView.getHeaderView(0);
+        vpAccountControl.setUserController(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +77,8 @@ public class HomeActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             navigateToFriendList();
         }
+
+        UserModel.getInstance().init();
     }
 
     @Override
@@ -89,6 +105,28 @@ public class HomeActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == AccountControlActivity.RC_ACCOUNT_CONTROL_REGISTER) {
+                boolean isRegisterSuccess = data.getBooleanExtra(AccountControlActivity.IR_IS_REGISTER_SUCCESS, false);
+                if (isRegisterSuccess) {
+                    SharedDialog.promptMsgWithTheme(this, getString(R.string.msg_welcome_new_user));
+                }
+            } else if (requestCode == AccountControlActivity.RC_ACCOUNT_CONTROL_LOGIN) {
+                boolean isLoginSuccess = data.getBooleanExtra(AccountControlActivity.IR_IS_LOGIN_SUCCESS, false);
+                if (isLoginSuccess) {
+                    SharedDialog.promptMsgWithTheme(this, getString(R.string.msg_welcome_returning_user));
+                }
+            }
+
+            UserEvent.RefreshUserLoginStatusEvent event = new UserEvent.RefreshUserLoginStatusEvent();
+            EventBus.getDefault().post(event);
+        }
     }
 
     @Override
@@ -127,4 +165,31 @@ public class HomeActivity extends AppCompatActivity
                 .commit();
     }
 
+    @Override
+    public void onTapLogin() {
+        Intent intent = AccountControlActivity.newIntent(AccountControlActivity.NAVIGATE_TO_LOGIN);
+        startActivityForResult(intent, AccountControlActivity.RC_ACCOUNT_CONTROL_LOGIN);
+    }
+
+    @Override
+    public void onTapRegister() {
+        Intent intent = AccountControlActivity.newIntent(AccountControlActivity.NAVIGATE_TO_REGISTER);
+        startActivityForResult(intent, AccountControlActivity.RC_ACCOUNT_CONTROL_LOGIN);
+    }
+
+    @Override
+    public void onTapLogout() {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        SharedDialog.confirmYesNoWithTheme(this, getString(R.string.msg_confirm_logout), new SharedDialog.YesNoConfirmDelegate() {
+            @Override
+            public void onConfirmYes() {
+                UserModel.getInstance().logout();
+            }
+
+            @Override
+            public void onConfirmNo() {
+
+            }
+        });
+    }
 }

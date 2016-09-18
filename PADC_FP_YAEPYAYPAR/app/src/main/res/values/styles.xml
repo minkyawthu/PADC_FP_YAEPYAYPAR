@@ -108,4 +108,16 @@
     <style name="Topeka.TextAppearance.ListItem" parent="TextAppearance.AppCompat.Subhead" />
     <style name="Topeka.TextAppearance.ListItemSecondary" parent="TextAppearance.AppCompat.Body1" />
 
+    <style name="LoginLogoutButton">
+        <item name="android:paddingLeft">@dimen/margin_medium_2</item>
+        <item name="android:paddingRight">@dimen/margin_medium_2</item>
+        <item name="android:textSize">@dimen/text_regular</item>
+        <item name="android:textColor">@color/text_white_ish</item>
+    </style>
+
+    <style name="AccentButton" parent="LoginLogoutButton">
+        <item name="android:backgroundTint">@color/accent_button</item>
+        <item name="android:background">@color/accent_button</item>
+    </style>
+
 </resources>
