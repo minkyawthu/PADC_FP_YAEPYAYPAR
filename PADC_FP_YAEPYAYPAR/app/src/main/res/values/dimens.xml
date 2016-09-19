@@ -24,10 +24,18 @@
 
     <dimen name="specific_left_menu_height">220dp</dimen>
     <dimen name="detail_backdrop_height">256dp</dimen>
+
+    <dimen name="spacing_nano">2dp</dimen>
+    <dimen name="size_avatar_toolbar">40dp</dimen>
+    <dimen name="elevation_header">4dp</dimen>
+    <dimen name="min_height_question">144dp</dimen>
+    <dimen name="min_height_touch_target">48dp</dimen>
+
     <dimen name="user_profile_image_size">64dp</dimen>
     <dimen name="login_user_name_margin_top">12dp</dimen>
     <dimen name="bg_dialog_button_radius">4dp</dimen>
     <dimen name="margin_spinner_label">21dp</dimen>
     <dimen name="dialog_header_image_size">48dp</dimen>
     <dimen name="dialog_button_height">35dp</dimen>
+
 </resources>

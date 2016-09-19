@@ -1,4 +1,4 @@
-package com.padc.yaepyaypar.utils;
+package com.padc.yaepyaypar.Utils;
 
 /**
  * Created by mkt on 9/16/2016.
@@ -26,5 +26,13 @@ public class YaePyayParConstants {
     public static final String PARAM_COVER_IMAGE = "cover_image";
 
     public static final int DIALOG_BUTTON_LABEL_LIMIT = 15;
+
+
+    public static final String CATEGROY_PERSONAL_INFO = "personal information";
+    public static final String CATEGORY_FAVOURITE = "favourite";
+    public static final String CATEGORY_MEMORIES = "memories";
+    public static final String CATEGORY_PLAN = "plan";
+    public static final String VIEWTYPE_FILLBLANK = "fill-blank";
+    public static final String CATEGORY_ID= "category id";
 
 }

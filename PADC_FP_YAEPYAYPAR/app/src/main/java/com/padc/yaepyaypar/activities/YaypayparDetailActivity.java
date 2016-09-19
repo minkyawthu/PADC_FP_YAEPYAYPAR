@@ -1,69 +1,88 @@
 package com.padc.yaepyaypar.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
+import android.util.Log;
+import android.widget.AdapterViewAnimator;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.padc.yaepyaypar.MultipleChoiceQuestionVo;
 import com.padc.yaepyaypar.R;
-import com.padc.yaepyaypar.adapters.YaypayparQuestionAdapter;
-import com.padc.yaepyaypar.YayPayParPostVo;
-
-import java.util.ArrayList;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
+import com.padc.yaepyaypar.YaePyayParApp;
+import com.padc.yaepyaypar.adapters.QuizAdapter;
+import com.padc.yaepyaypar.model.YaypayparModel;
+import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class YaypayparDetailActivity extends AppCompatActivity {
 
-    @BindView(R.id.recyclerViewQuestionList)
-    RecyclerView recyclerViewQuestionList;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.iv_attraction)
-    ImageView ivToolbar;
+    @BindView(R.id.quiz_view)
+    AdapterViewAnimator quizView;
+    @BindView(R.id.progress)
+    ProgressBar progress;
+    @BindView(R.id.mSeekbar)
+    SeekBar mSeekbar;
+    @BindView(R.id.progress_toolbar)
+    Toolbar progressToolbar;
+    private String categoryid;
+    private YaypayparModel model;
+    private YayPayParVo YayPayParitem;
+    private QuizAdapter mQuizAdapter;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-    private ArrayList<YayPayParPostVo> yaypayparpostvos;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        categoryid = (String) getIntent().getExtras().get(YaePyayParConstants.CATEGORY_ID);
+        Log.e(YaePyayParApp.TAG, "onStart: "+categoryid);
+        model = YaypayparModel.getInstance();
+        model.loadyaypaypar();
+        YayPayParitem = model.getYaypayparById(categoryid);
+        setTheme(YayPayParitem.getTheme().getStyleId());
         setContentView(R.layout.activity_yaypaypar_detail);
         ButterKnife.bind(this);
-       GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(ivToolbar);
+        quizView.setAdapter(getQuizAdapter());
+        setupProgress();
+    }
+    private QuizAdapter getQuizAdapter() {
+        if (null == mQuizAdapter) {
+            mQuizAdapter = new QuizAdapter(this, YayPayParitem);
+        }
+        return mQuizAdapter;
+    }
+    private void setupProgress(){
+        progress.setProgress(YayPayParitem.getQuizzes().size());
+        mSeekbar.setProgress(YayPayParitem.getQuizzes().size());
 
-        Glide.with(this)
-                .load(R.drawable.happykiddo)
-                .placeholder(R.drawable.happykiddo)
-                .into(ivToolbar);
-        setSupportActionBar(toolbar);
-        setupArrayList();
-        setupRecyclerView();
+        mSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                quizView.setSelection(i);
+            }
 
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
-    private void setupRecyclerView() {
-        recyclerViewQuestionList.setLayoutManager(new LinearLayoutManager(this));
-        YaypayparQuestionAdapter yaypayparQuestionAdapter = new YaypayparQuestionAdapter(yaypayparpostvos);
-        recyclerViewQuestionList.setAdapter(yaypayparQuestionAdapter);
-    }
 
-    private void setupArrayList() {
-        ArrayList<Integer> a = new ArrayList<>();
-        yaypayparpostvos = new ArrayList<>();
-        yaypayparpostvos.add(new YayPayParPostVo("What is your name", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new YayPayParPostVo("How does your Friend Calls you", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new MultipleChoiceQuestionVo("Where do you live", "", false, YaypayparQuestionAdapter.CHOICE_VIEWHOLDER,a));
-        yaypayparpostvos.add(new YayPayParPostVo("Who do you live with", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-        yaypayparpostvos.add(new YayPayParPostVo("What is your favourite food", "", false, YaypayparQuestionAdapter.NORMAL_VIEWHOLDER));
-
-
-    }
 }

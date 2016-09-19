@@ -4,8 +4,9 @@ import com.padc.yaepyaypar.data.agents.YaePyayParDataAgent;
 import com.padc.yaepyaypar.data.responses.LoginResponse;
 import com.padc.yaepyaypar.data.responses.RegisterResponse;
 import com.padc.yaepyaypar.events.UserEvent;
-import com.padc.yaepyaypar.utils.CommonInstances;
-import com.padc.yaepyaypar.utils.YaePyayParConstants;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
+
+import com.padc.yaepyaypar.Utils.CommonInstances;
 
 import java.util.concurrent.TimeUnit;
 
@@ -97,6 +98,11 @@ public class RetrofitDataAgent implements YaePyayParDataAgent{
                 EventBus.getDefault().post(event);
             }
         });
+
+    }
+
+    @Override
+    public void loadYayPayPar() {
 
     }
 }

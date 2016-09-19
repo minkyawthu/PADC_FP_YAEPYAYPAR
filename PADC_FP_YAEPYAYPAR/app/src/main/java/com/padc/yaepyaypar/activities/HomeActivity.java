@@ -22,7 +22,11 @@ import com.padc.yaepyaypar.dialogs.SharedDialog;
 import com.padc.yaepyaypar.events.UserEvent;
 import com.padc.yaepyaypar.fragments.FriendsListFragment;
 import com.padc.yaepyaypar.fragments.ShareProfileListFragment;
+
+import com.padc.yaepyaypar.fragments.YaypayparFragment;
+
 import com.padc.yaepyaypar.views.pods.ViewPodAccountControl;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -134,7 +138,7 @@ public class HomeActivity extends AppCompatActivity
                 return true;
             case R.id.left_menu_share_your_profile:
                 navigateToShareProfileList();
-
+                return true;
             case R.id.left_menu_yaypaypar:
                 navigateToYaypayparForm();
 
@@ -151,7 +155,7 @@ public class HomeActivity extends AppCompatActivity
     }
     private void navigateToYaypayparForm() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fl_container, FriendsListFragment.newInstance())
+                .replace(R.id.fl_container, YaypayparFragment.newInstance())
                 .commit();
     }
 

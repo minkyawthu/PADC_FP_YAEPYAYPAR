@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.padc.yaepyaypar.R;
-import com.padc.yaepyaypar.utils.YaePyayParConstants;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 
 /**
  * Created by mkt on 9/17/2016.

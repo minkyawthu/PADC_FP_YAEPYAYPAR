@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.padc.yaepyaypar.R;
 import com.padc.yaepyaypar.controllers.UserSessionController;
-import com.padc.yaepyaypar.utils.CommonUtils;
+import com.padc.yaepyaypar.Utils.CommonUtils;
 import com.padc.yaepyaypar.views.PasswordVisibilityListener;
 
 import butterknife.BindView;

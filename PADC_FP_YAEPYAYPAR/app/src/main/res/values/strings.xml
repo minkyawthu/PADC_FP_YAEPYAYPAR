@@ -1,11 +1,14 @@
 <resources>
-    <string name="app_name">PADC_FP_YAEPYAYPAR</string>
+    <string name="app_name">Yay Pay Bar</string>
     <string name="action_settings">Settings</string>
 
     <!-- left menu -->
     <string name="left_menu_your_friend_list">Your friend list</string>
     <string name="left_menu_share_your_profile">Your friend list that you share your profile</string>
     <string name="yaypaypar">yaypaypar</string>
+
+    <string name="category">Category</string>
+
     <string name="lbl_logout">Logout</string>
     <string name="lbl_register">Register</string>
     <string name="lbl_login">Login</string>
@@ -51,6 +54,7 @@
         <item>United Arab Emirates</item>
         <item>United States</item>
     </string-array>
+
 
     <!-- dummy friends name-->
     <string-array name="dummy_friends_name">

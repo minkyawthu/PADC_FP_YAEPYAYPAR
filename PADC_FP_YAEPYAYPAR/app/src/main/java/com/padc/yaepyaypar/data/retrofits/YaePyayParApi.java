@@ -2,7 +2,7 @@ package com.padc.yaepyaypar.data.retrofits;
 
 import com.padc.yaepyaypar.data.responses.LoginResponse;
 import com.padc.yaepyaypar.data.responses.RegisterResponse;
-import com.padc.yaepyaypar.utils.YaePyayParConstants;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

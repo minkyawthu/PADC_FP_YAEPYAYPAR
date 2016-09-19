@@ -1,5 +1,6 @@
-package com.padc.yaepyaypar.utils;
+package com.padc.yaepyaypar.Utils;
 
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 import com.padc.yaepyaypar.YaePyayParApp;
 
 import java.util.regex.Matcher;

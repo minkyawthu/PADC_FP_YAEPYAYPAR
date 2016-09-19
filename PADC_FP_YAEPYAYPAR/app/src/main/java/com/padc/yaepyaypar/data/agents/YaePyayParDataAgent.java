@@ -6,4 +6,5 @@ package com.padc.yaepyaypar.data.agents;
 public interface YaePyayParDataAgent {
     void register(String name, String email, String password, String dateOfBirth, String countryOfOrigin);
     void login(String email, String password);
+    void loadYayPayPar();
 }

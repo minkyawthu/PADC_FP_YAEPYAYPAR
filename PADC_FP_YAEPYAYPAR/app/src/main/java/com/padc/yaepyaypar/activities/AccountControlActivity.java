@@ -15,7 +15,7 @@ import com.padc.yaepyaypar.dialogs.SharedDialog;
 import com.padc.yaepyaypar.events.UserEvent;
 import com.padc.yaepyaypar.fragments.LoginFragment;
 import com.padc.yaepyaypar.fragments.RegisterFragment;
-import com.padc.yaepyaypar.utils.SecurityUtils;
+import com.padc.yaepyaypar.Utils.SecurityUtils;
 
 import de.greenrobot.event.EventBus;
 

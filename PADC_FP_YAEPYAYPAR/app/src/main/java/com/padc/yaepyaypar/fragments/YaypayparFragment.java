@@ -4,20 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.Utils.OffsetDecoration;
+import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 import com.padc.yaepyaypar.activities.YaypayparDetailActivity;
-import com.padc.yaepyaypar.adapters.FriendsListAdapter;
-import com.padc.yaepyaypar.views.FriendsViewHolder;
+import com.padc.yaepyaypar.adapters.YayPayparCategoryAdapter;
+import com.padc.yaepyaypar.model.YaypayparModel;
+import com.padc.yaepyaypar.Utils.listitemClicklistner;
+import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,47 +27,71 @@ import butterknife.ButterKnife;
 /**
  * Created by kaungkhantthu on 9/11/16.
  */
-public class YaypayparFragment extends Fragment implements FriendsViewHolder.listitemClicklistner {
-    @BindView(R.id.rv_friends)
-    RecyclerView rvFriends;
+public class YaypayparFragment extends Fragment implements listitemClicklistner {
 
-    private FriendsListAdapter mFriendListAdapter;
-    private int gridColumnSpanCount = 2;
+    @BindView(R.id.categories)
+    RecyclerView categoriesView;
+
+    private YayPayparCategoryAdapter yaypar;
+    private YayPayparCategoryAdapter mAdapter;
+    private ArrayList<YayPayParVo> yaypayparlist;
+
 
     public YaypayparFragment() {
     }
 
     public static Fragment newInstance() {
-        Fragment fragment = new FriendsListFragment();
+        Fragment fragment = new YaypayparFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] nameListArray = getResources().getStringArray(R.array.dummy_friends_name);
-        List<String> friendNameList = new ArrayList<>(Arrays.asList(nameListArray));
+        YaypayparModel.getInstance().loadyaypaypar();
+        View v;
 
-        mFriendListAdapter = new FriendsListAdapter(friendNameList,this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_yaypaypar, container, false);
         ButterKnife.bind(this, rootView);
-
-
-        rvFriends.setLayoutManager(new GridLayoutManager(getContext(), gridColumnSpanCount));
-        rvFriends.setAdapter(mFriendListAdapter);
-
+       yaypayparlist = (ArrayList<YayPayParVo>) YaypayparModel.getInstance().getYaypayparlist();
         return rootView;
     }
 
     @Override
-    public void onClick() {
-        Intent i = new Intent(getContext(), YaypayparDetailActivity.class);
-        startActivity(i);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setupRecyclerView();
+    }
+
+    private void setupRecyclerView() {
+        final int spacing = getContext().getResources()
+                .getDimensionPixelSize(R.dimen.spacing_nano);
+        categoriesView.addItemDecoration(new OffsetDecoration(spacing));
+        mAdapter = new YayPayparCategoryAdapter(getActivity(),this,yaypayparlist);
+
+        categoriesView.setAdapter(mAdapter);
+        categoriesView.getViewTreeObserver()
+                .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        categoriesView.getViewTreeObserver().removeOnPreDrawListener(this);
+                        getActivity().supportStartPostponedEnterTransition();
+                        return true;
+                    }
+                });
+    }
+
+    @Override
+    public void onClick(int position) {
+        Intent intent = new Intent(getActivity(), YaypayparDetailActivity.class);
+        intent.putExtra(YaePyayParConstants.CATEGORY_ID,yaypayparlist.get(position).getId());
+        getActivity().startActivity(intent);
+
     }
 }
 
