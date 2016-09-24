@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -17,16 +18,17 @@ import com.padc.yaepyaypar.vos.YayPayParVo;
 
 public abstract class TextInputQuizView<Q extends Quiz> extends AbsQuizView<Q>
         implements TextWatcher, TextView.OnEditorActionListener {
-
+    EditText editText;
     public TextInputQuizView(Context context, YayPayParVo category, Q quiz) {
         super(context, category, quiz);
     }
 
     protected final EditText createEditText() {
-        EditText editText = (EditText) getLayoutInflater().inflate(
+         editText = (EditText) getLayoutInflater().inflate(
                 R.layout.quiz_edit_text, this, false);
         editText.addTextChangedListener(this);
         editText.setOnEditorActionListener(this);
+
         return editText;
     }
 
@@ -71,6 +73,15 @@ public abstract class TextInputQuizView<Q extends Quiz> extends AbsQuizView<Q>
 
     @Override
     public void afterTextChanged(Editable s) {
+
+    }
+
+    @Override
+    public String getAnswer() {
+        Log.e( "getAnswer: ", editText.getText()+"");
+        if(null == editText.getText().toString()){
+            return "";
+        }else return editText.getText().toString();
 
     }
 }

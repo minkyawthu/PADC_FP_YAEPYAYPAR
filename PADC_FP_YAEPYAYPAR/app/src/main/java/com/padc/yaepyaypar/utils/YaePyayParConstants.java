@@ -33,6 +33,10 @@ public class YaePyayParConstants {
     public static final String CATEGORY_MEMORIES = "memories";
     public static final String CATEGORY_PLAN = "plan";
     public static final String VIEWTYPE_FILLBLANK = "fill-blank";
+    public static final String VIEWTYPE_GRIDITEM = "grid-item";
+    public static final String VIEWTYPE_COLORPICKER = "color-picker";
+
+
     public static final String CATEGORY_ID= "category id";
 
 }

@@ -1,5 +1,7 @@
 package com.padc.yaepyaypar.activities;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,16 +11,18 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.Utils.ApiLevelHelper;
 import com.padc.yaepyaypar.Utils.YaePyayParConstants;
 import com.padc.yaepyaypar.YaePyayParApp;
 import com.padc.yaepyaypar.adapters.QuizAdapter;
+import com.padc.yaepyaypar.colorpicker.dialog.ColorPickerDialogFragment;
 import com.padc.yaepyaypar.model.YaypayparModel;
 import com.padc.yaepyaypar.vos.YayPayParVo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class YaypayparDetailActivity extends AppCompatActivity {
+public class YaypayparDetailActivity extends AppCompatActivity  {
 
 
     @BindView(R.id.toolbar)
@@ -53,7 +57,9 @@ public class YaypayparDetailActivity extends AppCompatActivity {
         setTheme(YayPayParitem.getTheme().getStyleId());
         setContentView(R.layout.activity_yaypaypar_detail);
         ButterKnife.bind(this);
+        setQuizViewAnimations();
         quizView.setAdapter(getQuizAdapter());
+
         setupProgress();
     }
     private QuizAdapter getQuizAdapter() {
@@ -63,13 +69,14 @@ public class YaypayparDetailActivity extends AppCompatActivity {
         return mQuizAdapter;
     }
     private void setupProgress(){
-        progress.setProgress(YayPayParitem.getQuizzes().size());
-        mSeekbar.setProgress(YayPayParitem.getQuizzes().size());
+        progress.setMax(YayPayParitem.getQuizzes().size()-1);
+        mSeekbar.setMax(YayPayParitem.getQuizzes().size()-1);
 
         mSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 quizView.setSelection(i);
+
             }
 
             @Override
@@ -83,6 +90,15 @@ public class YaypayparDetailActivity extends AppCompatActivity {
             }
         });
     }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setQuizViewAnimations() {
+        if (ApiLevelHelper.isLowerThan(Build.VERSION_CODES.LOLLIPOP)) {
+            return;
+        }
+        quizView.setInAnimation(this, R.animator.slide_in_left);
+        quizView.setOutAnimation(this, R.animator.slide_out_right);
+    }
+
 
 
 }

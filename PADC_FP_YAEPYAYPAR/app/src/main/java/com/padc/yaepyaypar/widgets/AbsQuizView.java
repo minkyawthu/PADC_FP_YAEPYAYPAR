@@ -13,6 +13,7 @@ import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MarginLayoutParamsCompat;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.util.Log;
 import android.util.Property;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,8 +26,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.padc.yaepyaypar.R;
+import com.padc.yaepyaypar.YaePyayParApp;
 import com.padc.yaepyaypar.vos.Quiz;
 import com.padc.yaepyaypar.vos.YayPayParVo;
+
+import java.util.Stack;
 
 /**
  * <p>
@@ -37,7 +41,7 @@ import com.padc.yaepyaypar.vos.YayPayParVo;
 
 
  */
-public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
+public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout  {
 
     private static final int ANSWER_HIDE_DELAY = 500;
     private static final int FOREGROUND_COLOR_CHANGE_DELAY = 750;
@@ -210,7 +214,7 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
         view.setMinimumHeight(getResources().getDimensionPixelSize(R.dimen.min_height_question));
     }
 
-    public Quiz getquiz() {
-        return getQuiz();
-    }
+    public abstract String getAnswer();
+
+
 }

@@ -6,7 +6,7 @@
     "quizzes": [
       {
         "type": "fill-blank",
-        "question": "sadasd",
+        "question": "0",
         "captions": [
           ""
         ],
@@ -14,7 +14,47 @@
       },
       {
         "type": "fill-blank",
-        "question": "asdsdasd",
+        "question": "1",
+        "captions": [
+          ""
+        ],
+        "answer": ""
+      },
+      {
+        "type": "grid-item",
+        "question": "2",
+        "captions": [
+          "a","b","c","d"
+        ],
+        "answer": ""
+      },
+      {
+        "type": "fill-blank",
+        "question": "3",
+        "captions": [
+          ""
+        ],
+        "answer": ""
+      },
+      {
+        "type": "color-picker",
+        "question": "4",
+        "captions": [
+          ""
+        ],
+        "answer": ""
+      },
+      {
+        "type": "grid-item",
+        "question": "2",
+        "captions": [
+          "a","b","c","d"
+        ],
+        "answer": ""
+      },
+      {
+        "type": "fill-blank",
+        "question": "6",
         "captions": [
           ""
         ],
@@ -22,7 +62,7 @@
       },
       {
         "type": "fill-blank",
-        "question": "asassa",
+        "question": "7",
         "captions": [
           ""
         ],
@@ -30,47 +70,7 @@
       },
       {
         "type": "fill-blank",
-        "question": "",
-        "captions": [
-          ""
-        ],
-        "answer": ""
-      },
-      {
-        "type": "fill-blank",
-        "question": "",
-        "captions": [
-          ""
-        ],
-        "answer": ""
-      },
-      {
-        "type": "fill-blank",
-        "question": "",
-        "captions": [
-          ""
-        ],
-        "answer": ""
-      },
-      {
-        "type": "fill-blank",
-        "question": "",
-        "captions": [
-          ""
-        ],
-        "answer": ""
-      },
-      {
-        "type": "fill-blank",
-        "question": "",
-        "captions": [
-          ""
-        ],
-        "answer": ""
-      },
-      {
-        "type": "fill-blank",
-        "question": "",
+        "question": "last item",
         "captions": [
           ""
         ],
